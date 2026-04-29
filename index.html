@@ -132,7 +132,6 @@
       width:1rem;height:1rem;border-radius:50%;background:#fff;transition:transform .2s;
     }
     .toggle.on::after{transform:translateX(1.1rem)}
-
     /* ===== INVITE CARD ===== */
     .invite-wrap{margin-top:2rem;}
     .invite-card{
@@ -160,9 +159,7 @@
       padding:.28rem .75rem;border-radius:var(--r-full);
       border:1px solid rgba(255,255,255,.25);
     }
-    .invite-body{
-      padding:1.5rem 1.75rem 1.75rem;
-    }
+    .invite-body{padding:1.5rem 1.75rem 1.75rem;}
     .invite-title{
       font-family:var(--font-display);
       font-size:clamp(1.1rem,2.5vw,1.5rem);
@@ -175,9 +172,7 @@
       border-left:3px solid var(--primary);
       padding-left:1rem;
     }
-    .invite-details{
-      display:flex;flex-wrap:wrap;gap:.55rem;
-    }
+    .invite-details{display:flex;flex-wrap:wrap;gap:.55rem;}
     .invite-chip{
       display:inline-flex;align-items:center;gap:.4rem;
       padding:.38rem .85rem;
@@ -190,10 +185,7 @@
       background:var(--gold-soft);color:var(--gold);
       border-color:color-mix(in srgb,var(--gold) 20%,transparent);
     }
-    @media(max-width:480px){
-      .invite-body{padding:1.1rem 1.1rem 1.4rem;}
-    }
-
+    @media(max-width:480px){.invite-body{padding:1.1rem 1.1rem 1.4rem;}}
     /* ===== COUNTDOWN ===== */
     .countdown-wrap{margin-top:1.25rem;}
     .countdown-card{
@@ -225,9 +217,7 @@
       margin-bottom:1rem;
       color:rgba(255,255,255,.88);
     }
-    .cd-boxes{
-      display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;
-    }
+    .cd-boxes{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;}
     .cd-box{
       background:rgba(255,255,255,.15);
       backdrop-filter:blur(6px);
@@ -256,7 +246,6 @@
       color:#fff;padding:.5rem 0;
     }
     @media(max-width:360px){.cd-box{min-width:3.5rem;}.cd-num{font-size:1.4rem;}}
-
     /* ===== FOOTER CARD ===== */
     .footer-card{
       margin-top:2rem;padding:1.75rem;
@@ -265,7 +254,6 @@
       text-align:center;color:var(--muted);font-size:.9rem;line-height:1.9;
     }
     .footer-card strong{color:var(--text)}
-
     /* QR mini */
     .qr-mini{padding:1.75rem 0 0}
     .qr-mini-inner{
@@ -373,18 +361,13 @@
   <!-- ===== ШАҚЫРТУ + COUNTDOWN БЛОГЫ ===== -->
   <div class="container">
 
-    <!-- Шақырту карточкасы -->
     <div class="invite-wrap">
       <div class="invite-card">
-
-        <!-- Акт залы суреті -->
         <div class="invite-img-wrap">
           <img src="akt_zal.jpeg" alt="Мектептің акт залы" loading="lazy">
           <div class="invite-img-overlay"></div>
           <span class="invite-img-badge">📍 Мектептің акт залы</span>
         </div>
-
-        <!-- Шақырту мәтіні -->
         <div class="invite-body">
           <div class="invite-title">Сізді мерекелік концертке шақырамыз!</div>
           <p class="invite-text">
@@ -395,7 +378,7 @@
           </p>
           <div class="invite-details">
             <span class="invite-chip">📅 6 мамыр 2026</span>
-            <span class="invite-chip">🕔 Сағат 17:00</span>
+            <span class="invite-chip">🕐 Сағат 11:30</span>
             <span class="invite-chip">📍 Акт залы</span>
             <span class="invite-chip gold">🎭 Мерекелік концерт</span>
           </div>
@@ -403,7 +386,6 @@
       </div>
     </div>
 
-    <!-- Санағыш -->
     <div class="countdown-wrap">
       <div class="countdown-card">
         <div class="cd-eyebrow">⏳ Іс-шараға дейін қалды</div>
@@ -431,7 +413,6 @@
     </div>
   </div>
 
-  <!-- QR mini -->
   <div class="container">
     <div class="qr-mini">
       <div class="qr-mini-inner">
@@ -456,7 +437,6 @@
 
 <script>
 (function(){
-  /* ---- TEACHERS ---- */
   var teachers=[
     {l:"Бекенов",f:"Асқар",s:"Информатика"},
     {l:"Жақсыбеков",f:"Нұрлан",s:"Математика"},
@@ -540,8 +520,8 @@
 
   goTo(0);startAuto();
 
-  /* ---- COUNTDOWN ---- */
-  var target=new Date('2026-05-06T17:00:00+05:00');
+  /* ---- COUNTDOWN: 6 мамыр 11:30 ---- */
+  var target=new Date('2026-05-06T11:30:00+05:00');
   function pad(n){return n<10?'0'+n:String(n);}
   function tickCd(){
     var now=new Date();
