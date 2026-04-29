@@ -91,17 +91,15 @@
     }
     .avatar{
       width:clamp(6rem,20vw,9rem);height:clamp(6rem,20vw,9rem);
-      border-radius:50%;display:grid;place-items:center;
-      font-family:var(--font-display);font-size:clamp(1.6rem,5vw,3rem);
-      color:#fff;box-shadow:var(--shadow);margin-bottom:1.25rem;
-      border:4px solid rgba(255,255,255,.3);letter-spacing:.02em;
+      border-radius:50%;overflow:hidden;
+      box-shadow:var(--shadow);margin-bottom:1.25rem;
+      border:4px solid var(--primary-soft);
+      background:var(--surface2);
     }
-    .slide h3{font-family:var(--font-display);font-size:clamp(1.15rem,3vw,1.6rem);margin-bottom:.4rem}
-    .slide .subject{
-      display:inline-block;padding:.3rem .85rem;border-radius:var(--r-full);
-      background:var(--gold-soft);color:var(--gold);font-size:.75rem;font-weight:700;margin-bottom:.5rem;
-    }
-    .slide .school{color:var(--muted);font-size:.82rem}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+    .slide h3{font-family:var(--font-display);font-size:clamp(1.05rem,2.5vw,1.45rem);margin-bottom:.25rem;line-height:1.25}
+    .slide .patronymic{color:var(--muted);font-size:.82rem;margin-bottom:.4rem}
+    .slide .school{color:var(--faint);font-size:.78rem}
     .dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.5rem;flex-wrap:wrap;padding:0 .5rem;}
     .dot-item{
       width:.55rem;height:.55rem;border-radius:50%;background:var(--divider);cursor:pointer;
@@ -211,13 +209,7 @@
       border-radius:var(--r-full);margin-bottom:.75rem;
       color:rgba(255,255,255,.9);
     }
-    .cd-title{
-      font-family:var(--font-display);
-      font-size:clamp(.95rem,2.5vw,1.2rem);
-      margin-bottom:1rem;
-      color:rgba(255,255,255,.88);
-    }
-    .cd-boxes{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;}
+    .cd-boxes{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem;}
     .cd-box{
       background:rgba(255,255,255,.15);
       backdrop-filter:blur(6px);
@@ -240,6 +232,11 @@
       text-transform:uppercase;color:rgba(255,255,255,.7);
       display:block;margin-top:.3rem;
     }
+    .cd-footer{
+      font-size:.75rem;font-weight:700;letter-spacing:.18em;
+      text-transform:uppercase;color:rgba(255,255,255,.75);
+      margin-top:.1rem;
+    }
     .cd-done{
       font-family:var(--font-display);
       font-size:clamp(1.1rem,3vw,1.6rem);
@@ -254,7 +251,6 @@
       text-align:center;color:var(--muted);font-size:.9rem;line-height:1.9;
     }
     .footer-card strong{color:var(--text)}
-    /* QR mini */
     .qr-mini{padding:1.75rem 0 0}
     .qr-mini-inner{
       display:flex;align-items:center;justify-content:space-between;gap:1rem;
@@ -335,7 +331,7 @@
     <div class="container">
       <div class="section-label">
         <h2>Мектебіміздің ер азаматтары</h2>
-        <span class="counter" id="slideCounter">1 / 20</span>
+        <span class="counter" id="slideCounter">1 / 14</span>
       </div>
       <div class="slideshow-wrap" id="slideshowWrap">
         <button class="arrow arrow-prev" id="prevBtn" aria-label="Алдыңғы">
@@ -358,7 +354,6 @@
     </div>
   </section>
 
-  <!-- ===== ШАҚЫРТУ + COUNTDOWN БЛОГЫ ===== -->
   <div class="container">
 
     <div class="invite-wrap">
@@ -380,7 +375,7 @@
             <span class="invite-chip">📅 6 мамыр 2026</span>
             <span class="invite-chip">🕐 Сағат 11:30</span>
             <span class="invite-chip">📍 Акт залы</span>
-            <span class="invite-chip gold">🎭 Мерекелік іс-шараға</span>
+            <span class="invite-chip gold">🎭 Мерекелік іс-шара</span>
           </div>
         </div>
       </div>
@@ -388,19 +383,31 @@
 
     <div class="countdown-wrap">
       <div class="countdown-card">
-        <div class="cd-eyebrow">⏳ Мерекелік іс-шараға дейін қалды</div>
+        <div class="cd-eyebrow">⏳ Мерекелік іс-шараға дейін</div>
         <div class="cd-boxes" id="cdBoxes">
-          <div class="cd-box"><span class="cd-num" id="cdDays">--</span><span class="cd-lbl">Күн</span></div>
-          <div class="cd-box"><span class="cd-num" id="cdHours">--</span><span class="cd-lbl">Сағат</span></div>
-          <div class="cd-box"><span class="cd-num" id="cdMins">--</span><span class="cd-lbl">Минут</span></div>
-          <div class="cd-box"><span class="cd-num" id="cdSecs">--</span><span class="cd-lbl">Секунд</span></div>
+          <div class="cd-box">
+            <span class="cd-num" id="cdDays">--</span>
+            <span class="cd-lbl">Күн</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="cdHours">--</span>
+            <span class="cd-lbl">Сағат</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="cdMins">--</span>
+            <span class="cd-lbl">Минут</span>
+          </div>
+          <div class="cd-box">
+            <span class="cd-num" id="cdSecs">--</span>
+            <span class="cd-lbl">Секунд</span>
+          </div>
         </div>
-        <div id="cdDoneMsg" style="display:none" class="cd-done">🎊 Іс-шараға басталды! Мерекеңізбен, ардақты ер мұғалімдер!</div>
+        <div class="cd-footer">қалды</div>
+        <div id="cdDoneMsg" style="display:none" class="cd-done">🎊 Іс-шара басталды! Мерекеңізбен, ардақты ер азаматтар!</div>
       </div>
     </div>
 
   </div>
-  <!-- ===== /ШАҚЫРТУ + COUNTDOWN ===== -->
 
   <div class="container">
     <div class="footer-card">
@@ -437,43 +444,33 @@
 <script>
 (function(){
   var teachers=[
-    {l:"Бекенов",f:"Асқар",s:"Информатика"},
-    {l:"Жақсыбеков",f:"Нұрлан",s:"Математика"},
-    {l:"Омаров",f:"Серік",s:"Физика"},
-    {l:"Сейітқали",f:"Бауыржан",s:"Тарих"},
-    {l:"Қасымов",f:"Дастан",s:"Дене шынықтыру"},
-    {l:"Тоқтаров",f:"Ерлан",s:"Химия"},
-    {l:"Ибраев",f:"Марат",s:"Биология"},
-    {l:"Досжанов",f:"Алибек",s:"География"},
-    {l:"Сұлтанов",f:"Тимур",s:"Қазақ тілі"},
-    {l:"Нұрмағамбетов",f:"Руслан",s:"Орыс тілі"},
-    {l:"Жұмабеков",f:"Айбек",s:"Ағылшын тілі"},
-    {l:"Қожахметов",f:"Болат",s:"Робототехника"},
-    {l:"Мұхамедиев",f:"Санжар",s:"Музыка"},
-    {l:"Бейсенов",f:"Ғалым",s:"Технология"},
-    {l:"Әбдіров",f:"Нұрболат",s:"Информатика"},
-    {l:"Елеусізов",f:"Азамат",s:"Математика"},
-    {l:"Мәмбетов",f:"Қайрат",s:"Физика"},
-    {l:"Сатыбалдиев",f:"Берік",s:"Тарих"},
-    {l:"Қонысбаев",f:"Арман",s:"Бейнелеу өнері"},
-    {l:"Ізтілеуов",f:"Дәурен",s:"Еңбек"}
+    {last:"Сыдық",   first:"Қуат",     mid:"Тұрсынұлы",   img:"1.jpeg"},
+    {last:"Черикбанов", first:"Талғат",  mid:"Акимбаевич",  img:"2.jpeg"},
+    {last:"Омарбаев", first:"Амангазы", mid:"Абусалыкович",img:"3.jpeg"},
+    {last:"Саитбеков",first:"Тимур",    mid:"Саитбекович", img:"4.jpeg"},
+    {last:"Амиров",   first:"Меиз",     mid:"Мукенович",   img:"5.jpeg"},
+    {last:"Тултаев",  first:"Тилек",    mid:"Жумагазинович",img:"6.jpeg"},
+    {last:"Байтолыков",first:"Амантай", mid:"Саниязбекович",img:"7.jpeg"},
+    {last:"Жексембаев",first:"Ерболат", mid:"Газизович",   img:"8.jpeg"},
+    {last:"Толеугазыев",first:"Ердос",  mid:"Абзалович",   img:"9.jpeg"},
+    {last:"Ибраев",   first:"Еркен",    mid:"Серикович",   img:"10.jpeg"},
+    {last:"Нурлиханов",first:"Адлет",   mid:"Сержанович",  img:"11.jpeg"},
+    {last:"Сыгаев",   first:"Бауыржан", mid:"Сагидоллаевич",img:"12.jpeg"},
+    {last:"Оразханов",first:"Сунгат",   mid:"Ахмадиярович",img:"13.jpeg"},
+    {last:"Алтынбек", first:"",         mid:"Шарипханович", img:"14.jpeg"}
   ];
-  var colors=["#0b6b74","#bf8b1a","#1a6bbf","#7b2fa0","#1a8c5c",
-    "#c0392b","#2e86ab","#e67e22","#16a085","#8e44ad",
-    "#d35400","#27ae60","#2980b9","#c0392b","#1abc9c",
-    "#f39c12","#6c3483","#117a65","#1f618d","#7d6608"];
 
   var slidesEl=document.getElementById('slides');
   var dotsEl=document.getElementById('dots');
   var sHTML='',dHTML='';
   teachers.forEach(function(t,i){
-    var ini=t.l[0]+(t.f[0]||'');
+    var fullName = t.last + (t.first ? ' ' + t.first : '');
     sHTML+='<div class="slide">'+
-      '<div class="avatar" style="background:'+colors[i]+'">'+ini+'</div>'+
-      '<h3>'+t.l+' '+t.f+'</h3>'+
-      '<span class="subject">'+t.s+'</span>'+
+      '<div class="avatar"><img src="'+t.img+'" alt="'+fullName+'" loading="lazy" onerror="this.parentNode.style.background=\'#0b6b74\';this.style.display=\'none\'"></div>'+
+      '<h3>'+fullName+'</h3>'+
+      '<p class="patronymic">'+t.mid+'</p>'+
       '<p class="school">Мектеп ұжымы</p></div>';
-    dHTML+='<button class="dot-item'+(i===0?' active':'')+'" data-i="'+i+'" aria-label="'+(i+1)+'"></button>';
+    dHTML+='<button class="dot-item'+(i===0?' active':'')+'\" data-i="'+i+'" aria-label="'+(i+1)+'"></button>';
   });
   slidesEl.innerHTML=sHTML;
   dotsEl.innerHTML=dHTML;
@@ -527,6 +524,7 @@
     var diff=target-now;
     if(diff<=0){
       document.getElementById('cdBoxes').style.display='none';
+      document.querySelector('.cd-footer').style.display='none';
       document.getElementById('cdDoneMsg').style.display='block';
       return;
     }
