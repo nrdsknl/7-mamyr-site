@@ -132,8 +132,81 @@
       width:1rem;height:1rem;border-radius:50%;background:#fff;transition:transform .2s;
     }
     .toggle.on::after{transform:translateX(1.1rem)}
+    /* ---- COUNTDOWN ---- */
+    .countdown-wrap{
+      margin-top:2rem;
+    }
+    .countdown-card{
+      background:linear-gradient(135deg,var(--primary) 0%,#0e8a96 100%);
+      border-radius:var(--r-lg);
+      padding:1.75rem 1.5rem;
+      box-shadow:var(--shadow-lg);
+      color:#fff;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .countdown-card::before{
+      content:'';
+      position:absolute;inset:0;
+      background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.12),transparent 55%);
+      pointer-events:none;
+    }
+    .cd-eyebrow{
+      display:inline-flex;align-items:center;gap:.4rem;
+      font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+      background:rgba(255,255,255,.18);padding:.3rem .8rem;
+      border-radius:var(--r-full);margin-bottom:.9rem;
+      color:rgba(255,255,255,.9);
+    }
+    .cd-title{
+      font-family:var(--font-display);
+      font-size:clamp(1rem,2.5vw,1.35rem);
+      margin-bottom:.3rem;
+      color:#fff;
+    }
+    .cd-meta{
+      font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:1.25rem;
+    }
+    .cd-meta span{
+      display:inline-flex;align-items:center;gap:.3rem;
+      margin:0 .4rem;
+    }
+    .cd-boxes{
+      display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;
+      margin-bottom:1rem;
+    }
+    .cd-box{
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:.75rem;
+      padding:.65rem .5rem .5rem;
+      min-width:4.5rem;
+      flex:1;max-width:5.5rem;
+    }
+    .cd-num{
+      font-family:var(--font-display);
+      font-size:clamp(1.6rem,5vw,2.4rem);
+      line-height:1;
+      display:block;
+      color:#fff;
+      letter-spacing:.02em;
+    }
+    .cd-lbl{
+      font-size:.62rem;font-weight:700;letter-spacing:.06em;
+      text-transform:uppercase;color:rgba(255,255,255,.7);
+      display:block;margin-top:.3rem;
+    }
+    .cd-done{
+      font-family:var(--font-display);
+      font-size:clamp(1.1rem,3vw,1.6rem);
+      color:#fff;padding:.5rem 0;
+    }
+    @media(max-width:360px){.cd-box{min-width:3.5rem;}.cd-num{font-size:1.4rem;}}
+    /* ---- FOOTER CARD ---- */
     .footer-card{
-      margin-top:2.5rem;padding:1.75rem;
+      margin-top:2rem;padding:1.75rem;
       border-radius:var(--r-lg);background:var(--surface);
       border:1px solid var(--border);box-shadow:var(--shadow);
       text-align:center;color:var(--muted);font-size:.9rem;line-height:1.9;
@@ -243,6 +316,28 @@
     </div>
   </section>
 
+  <!-- COUNTDOWN BLOCK -->
+  <div class="container">
+    <div class="countdown-wrap">
+      <div class="countdown-card">
+        <div class="cd-eyebrow">🎉 Іс-шара санағышы</div>
+        <div class="cd-title">Мектептің акт залындағы мерекелік іс-шараға дейін</div>
+        <div class="cd-meta">
+          <span>📅 6 мамыр 2026</span>
+          <span>🕔 17:00</span>
+          <span>📍 Акт залы</span>
+        </div>
+        <div class="cd-boxes" id="cdBoxes">
+          <div class="cd-box"><span class="cd-num" id="cdDays">--</span><span class="cd-lbl">Күн</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdHours">--</span><span class="cd-lbl">Сағат</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdMins">--</span><span class="cd-lbl">Минут</span></div>
+          <div class="cd-box"><span class="cd-num" id="cdSecs">--</span><span class="cd-lbl">Секунд</span></div>
+        </div>
+        <div id="cdDoneMsg" style="display:none" class="cd-done">🎊 Іс-шара басталды! Мерекеңізбен!</div>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="footer-card">
       <strong>Ардақты ер мұғалімдер!</strong><br>
@@ -253,7 +348,7 @@
     </div>
   </div>
 
-  <!-- QR mini — footer алдында ықшам -->
+  <!-- QR mini -->
   <div class="container">
     <div class="qr-mini">
       <div class="qr-mini-inner">
@@ -278,6 +373,7 @@
 
 <script>
 (function(){
+  /* ---- TEACHERS ---- */
   var teachers=[
     {l:"Бекенов",f:"Асқар",s:"Информатика"},
     {l:"Жақсыбеков",f:"Нұрлан",s:"Математика"},
@@ -361,7 +457,30 @@
 
   goTo(0);startAuto();
 
-  /* MUSIC */
+  /* ---- COUNTDOWN ---- */
+  var target=new Date('2026-05-06T17:00:00+05:00');
+  function pad(n){return n<10?'0'+n:String(n);}
+  function tickCd(){
+    var now=new Date();
+    var diff=target-now;
+    if(diff<=0){
+      document.getElementById('cdBoxes').style.display='none';
+      document.getElementById('cdDoneMsg').style.display='block';
+      return;
+    }
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    document.getElementById('cdDays').textContent=pad(d);
+    document.getElementById('cdHours').textContent=pad(h);
+    document.getElementById('cdMins').textContent=pad(m);
+    document.getElementById('cdSecs').textContent=pad(s);
+  }
+  tickCd();
+  setInterval(tickCd,1000);
+
+  /* ---- MUSIC ---- */
   var audio=document.getElementById('bgMusic');
   var mBtn=document.getElementById('musicToggle');
   var mLbl=document.getElementById('musicLabel');
@@ -384,7 +503,7 @@
     document.removeEventListener('click',once);
   },{once:true});
 
-  /* THEME */
+  /* ---- THEME ---- */
   var root=document.documentElement,theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   root.setAttribute('data-theme',theme);
   document.getElementById('themeToggle').addEventListener('click',function(){
