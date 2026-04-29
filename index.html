@@ -90,7 +90,7 @@
       padding:0 2.5rem;text-align:center;user-select:none;
     }
     .avatar{
-      width:clamp(6rem,20vw,9rem);height:clamp(6rem,20vw,9rem);
+      width:clamp(8rem,25vw,12rem);height:clamp(8rem,25vw,12rem);
       border-radius:50%;overflow:hidden;
       box-shadow:var(--shadow);margin-bottom:1.25rem;
       border:4px solid var(--primary-soft);
@@ -292,7 +292,7 @@
     <div class="container">
       <div class="section-label">
         <h2>Мектебіміздің ер азаматтары</h2>
-        <span class="counter" id="slideCounter">1 / 14</span>
+        <span class="counter" id="slideCounter">1 / 15</span>
       </div>
       <div class="slideshow-wrap" id="slideshowWrap">
         <button class="arrow arrow-prev" id="prevBtn" aria-label="Алдыңғы">
@@ -405,21 +405,21 @@
 <script>
 (function(){
   var teachers=[
-    {name:"Сыдық Қуат Тұрсынұлы",     img:"1.jpeg"},
-    {name:"Черикбанов Талғат Акимбаевич",  img:"2.jpeg"},
-    {name:"Омарбаев Амангазы Абусалыкович",img:"3.jpeg"},
-    {name:"Саитбеков Тимур Саитбекович",   img:"4.jpeg"},
-    {name:"Амиров Меиз Мукенович",         img:"5.jpeg"},
-    {name:"Тултаев Тилек Жумагазинович",   img:"6.jpeg"},
-    {name:"Байтолыков Амантай Саниязбекович",img:"7.jpeg"},
-    {name:"Жексембаев Ерболат Газизович",  img:"8.jpeg"},
-    {name:"Толеугазыев Ердос Абзалович",   img:"9.jpeg"},
-    {name:"Ибраев Еркен Серикович",        img:"10.jpeg"},
-    {name:"Нурлиханов Адлет Сержанович",   img:"11.jpeg"},
-    {name:"Сыгаев Бауыржан Сагидоллаевич", img:"12.jpeg"},
-    {name:"Камзаханов Ахметкали Мукангалиевич", img:"13.jpeg"},
-    {name:"Оразханов Сунгат Ахмадиярович", img:"14.jpeg"},
-    {name:"Алтынбек Шарипханович",         img:"15.jpeg"}
+    {name:"Сыдық Қуат Тұрсынұлы",               img:"1.jpeg"},
+    {name:"Черикбанов Талғат Акимбаевич",         img:"2.jpeg"},
+    {name:"Омарбаев Амангазы Абусалыкович",       img:"3.jpeg"},
+    {name:"Саитбеков Тимур Саитбекович",          img:"4.jpeg"},
+    {name:"Амиров Меиз Мукенович",               img:"5.jpeg"},
+    {name:"Тултаев Тилек Жумагазинович",          img:"6.jpeg"},
+    {name:"Байтолыков Амантай Саниязбекович",     img:"7.jpeg"},
+    {name:"Жексембаев Ерболат Газизович",         img:"8.jpeg"},
+    {name:"Толеугазыев Ердос Абзалович",          img:"9.jpeg"},
+    {name:"Ибраев Еркен Серикович",              img:"10.jpeg"},
+    {name:"Нурлиханов Адлет Сержанович",          img:"11.jpeg"},
+    {name:"Сыгаев Бауыржан Сагидоллаевич",        img:"12.jpeg"},
+    {name:"Камзаханов Ахметкали Мукангалиевич",   img:"13.jpeg"},
+    {name:"Оразханов Сунгат Ахмадиярович",        img:"14.jpeg"},
+    {name:"Алтынбек Шарипханович",               img:"15.jpeg"}
   ];
 
   var slidesEl=document.getElementById('slides');
