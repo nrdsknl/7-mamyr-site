@@ -59,14 +59,15 @@
       display:flex;align-items:center;gap:.4rem;padding:.55rem .9rem;
       border-radius:var(--r-full);border:1px solid var(--border);
       background:var(--surface);color:var(--text);cursor:pointer;font-size:.8rem;font-weight:600;
-      min-height:44px;
+      min-height:44px;transition:background .2s,border-color .2s;
     }
+    .music-btn.playing{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
     .music-btn .mdot{
       width:.55rem;height:.55rem;border-radius:50%;
-      background:var(--primary);animation:pulse 1.4s infinite;
+      background:var(--muted);flex-shrink:0;
     }
-    .music-btn.paused .mdot{animation:none;background:var(--muted)}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+    .music-btn.playing .mdot{background:var(--primary);animation:pulse 1.2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.65)}}
     main{padding-bottom:3rem}
     .hero{padding:2.5rem 0 1.5rem}
     .eyebrow{
@@ -77,19 +78,14 @@
     }
     h1{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3.2rem);line-height:1.1;margin-bottom:.75rem}
     .hero p{color:var(--muted);max-width:52ch;font-size:.95rem;margin-bottom:1.5rem}
-    .section-label{
-      display:flex;align-items:center;justify-content:space-between;
-      margin-bottom:1.25rem;
-    }
+    .section-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
     .section-label h2{font-family:var(--font-display);font-size:clamp(1.2rem,2.5vw,1.75rem)}
     .counter{font-size:.82rem;color:var(--muted);font-weight:600}
     .slideshow-wrap{
       position:relative;overflow:hidden;
-      border-radius:var(--r-lg);
-      background:var(--surface);
+      border-radius:var(--r-lg);background:var(--surface);
       border:1px solid color-mix(in srgb,var(--border) 75%,transparent);
-      box-shadow:var(--shadow-lg);
-      padding:2.5rem 1.25rem 1.5rem;
+      box-shadow:var(--shadow-lg);padding:2.5rem 1.25rem 1.5rem;
     }
     .slides{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
     .slide{
@@ -99,30 +95,20 @@
     .avatar{
       width:clamp(6rem,20vw,9rem);height:clamp(6rem,20vw,9rem);
       border-radius:50%;display:grid;place-items:center;
-      font-family:var(--font-display);
-      font-size:clamp(1.6rem,5vw,3rem);
-      color:#fff;
-      box-shadow:var(--shadow);
-      margin-bottom:1.25rem;
-      border:4px solid rgba(255,255,255,.3);
-      letter-spacing:.02em;
+      font-family:var(--font-display);font-size:clamp(1.6rem,5vw,3rem);
+      color:#fff;box-shadow:var(--shadow);margin-bottom:1.25rem;
+      border:4px solid rgba(255,255,255,.3);letter-spacing:.02em;
     }
     .slide h3{font-family:var(--font-display);font-size:clamp(1.15rem,3vw,1.6rem);margin-bottom:.4rem}
     .slide .subject{
       display:inline-block;padding:.3rem .85rem;border-radius:var(--r-full);
-      background:var(--gold-soft);color:var(--gold);font-size:.75rem;font-weight:700;
-      margin-bottom:.5rem;
+      background:var(--gold-soft);color:var(--gold);font-size:.75rem;font-weight:700;margin-bottom:.5rem;
     }
     .slide .school{color:var(--muted);font-size:.82rem}
-    .dots{
-      display:flex;justify-content:center;gap:.45rem;
-      margin-top:1.5rem;flex-wrap:wrap;padding:0 .5rem;
-    }
+    .dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.5rem;flex-wrap:wrap;padding:0 .5rem;}
     .dot-item{
-      width:.55rem;height:.55rem;border-radius:50%;
-      background:var(--divider);cursor:pointer;
-      transition:background .2s,transform .2s;border:none;
-      padding:0;
+      width:.55rem;height:.55rem;border-radius:50%;background:var(--divider);cursor:pointer;
+      transition:background .2s,transform .2s;border:none;padding:0;
     }
     .dot-item.active{background:var(--primary);transform:scale(1.35)}
     .arrow{
@@ -134,13 +120,8 @@
       z-index:5;transition:background .2s;
     }
     .arrow:hover{background:var(--primary-soft)}
-    .arrow-prev{left:.75rem}
-    .arrow-next{right:.75rem}
-    .progress-bar{
-      position:absolute;bottom:0;left:0;height:3px;
-      background:linear-gradient(90deg,var(--primary),var(--gold));
-      border-radius:0;
-    }
+    .arrow-prev{left:.75rem}.arrow-next{right:.75rem}
+    .progress-bar{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:0;}
     .controls{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;flex-wrap:wrap;gap:.5rem}
     .auto-label{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.5rem;cursor:pointer}
     .toggle{
@@ -151,15 +132,92 @@
     .toggle.on{background:var(--primary)}
     .toggle::after{
       content:'';position:absolute;top:.2rem;left:.2rem;
-      width:1rem;height:1rem;border-radius:50%;background:#fff;
-      transition:transform .2s;
+      width:1rem;height:1rem;border-radius:50%;background:#fff;transition:transform .2s;
     }
     .toggle.on::after{transform:translateX(1.1rem)}
+    /* ---- QR SECTION ---- */
+    .qr-section{
+      margin-top:3rem;padding:2rem 0;
+    }
+    .qr-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--r-lg);
+      padding:2rem 1.5rem;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1.25rem;
+      text-align:center;
+    }
+    .qr-title{
+      font-family:var(--font-display);
+      font-size:clamp(1.1rem,2.5vw,1.5rem);
+      margin:0;
+    }
+    .qr-sub{color:var(--muted);font-size:.88rem;max-width:38ch;line-height:1.6;}
+    .qr-img-wrap{
+      position:relative;
+      background:#fff;
+      border-radius:var(--r-md);
+      padding:1rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.10);
+      border:3px solid var(--primary-soft);
+    }
+    .qr-img-wrap img{display:block;width:200px;height:200px;border-radius:.35rem;}
+    .qr-badge{
+      position:absolute;bottom:-.7rem;left:50%;transform:translateX(-50%);
+      background:var(--primary);color:#fff;
+      font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      padding:.25rem .75rem;border-radius:var(--r-full);
+      white-space:nowrap;
+    }
+    .qr-url{
+      font-size:.78rem;color:var(--primary);
+      word-break:break-all;font-weight:600;
+      background:var(--primary-soft);
+      padding:.4rem .85rem;border-radius:var(--r-full);
+    }
+    .qr-hint{font-size:.75rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;}
+    /* ---- FEATURES SECTION ---- */
+    .features-section{margin-top:2.5rem}
+    .section-head{margin-bottom:1.5rem}
+    .section-head h2{font-family:var(--font-display);font-size:clamp(1.2rem,2.5vw,1.75rem);margin-bottom:.35rem}
+    .section-head p{color:var(--muted);font-size:.88rem}
+    .features-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));
+      gap:1rem;
+    }
+    .feat-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--r-md);
+      padding:1.25rem 1.1rem;
+      box-shadow:var(--shadow);
+      display:flex;gap:.9rem;align-items:flex-start;
+    }
+    .feat-icon{
+      width:2.5rem;height:2.5rem;border-radius:.65rem;
+      display:grid;place-items:center;flex-shrink:0;
+      font-size:1.2rem;
+    }
+    .feat-card h3{font-size:.9rem;font-weight:700;margin-bottom:.3rem}
+    .feat-card p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.55}
+    .feat-tag{
+      display:inline-block;margin-top:.5rem;
+      font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      padding:.18rem .55rem;border-radius:var(--r-full);
+    }
+    .tag-easy{background:rgba(70,107,43,.12);color:#466b2b}
+    .tag-medium{background:var(--gold-soft);color:var(--gold)}
+    .tag-wow{background:var(--primary-soft);color:var(--primary)}
+    /* ---- FOOTER CARD ---- */
     .footer-card{
       margin-top:2.5rem;padding:1.75rem;
       border-radius:var(--r-lg);background:var(--surface);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
+      border:1px solid var(--border);box-shadow:var(--shadow);
       text-align:center;color:var(--muted);font-size:.9rem;line-height:1.9;
     }
     .footer-card strong{color:var(--text)}
@@ -183,9 +241,9 @@
       <div><strong>Ер мұғалімдерге құрмет</strong><span>7 мамыр · мектептік беті</span></div>
     </div>
     <div class="nav-right">
-      <button class="music-btn paused" id="musicToggle" title="Музыканы қос / өшір">
+      <button class="music-btn" id="musicToggle" title="Музыканы қос / өшір">
         <span class="mdot"></span>
-        <span id="musicLabel">Музыка</span>
+        <span id="musicLabel">Аәуен қос</span>
       </button>
       <button class="icon-btn" id="themeToggle" title="Тақырып">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -203,7 +261,7 @@
     </div>
   </section>
 
-  <section style="padding-bottom:3rem">
+  <section style="padding-bottom:1.5rem">
     <div class="container">
       <div class="section-label">
         <h2>Ер мұғалімдер</h2>
@@ -230,6 +288,86 @@
     </div>
   </section>
 
+  <!-- QR CODE SECTION -->
+  <section class="qr-section">
+    <div class="container">
+      <div class="qr-card">
+        <h2 class="qr-title">📱 Сайтқа оңай кіру</h2>
+        <p class="qr-sub">Құрылғышты нүктеп қана ашыңыз — бұл бетті кәме телефоныңызда ашуға болады!</p>
+        <div class="qr-img-wrap">
+          <img src="http://qrcoder.ru/code/?https%3A%2F%2Fnrdsknl.github.io%2F7-mamyr-site%2F&8&0"
+               alt="QR код — 7 мамыр сайты" width="200" height="200">
+          <span class="qr-badge">QR код</span>
+        </div>
+        <div class="qr-url">nrdsknl.github.io/7-mamyr-site</div>
+        <p class="qr-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Телефон камерасымен нүктеңіз — сайт ашылады
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Тағы қосуға болады</h2>
+        <p>Сайтты одан сайын толықтыра аламыз</p>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <div class="feat-icon" style="background:#d9e8e8">📸</div>
+          <div>
+            <h3>Нақты фотолар</h3>
+            <p>Әр мұғалімнің нақты фотосын аватар орнына қоюға болады — слайд-шоу одан эмоционалды болады!</p>
+            <span class="feat-tag tag-easy">Ең сұралған</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:#f3e6c8">💬</div>
+          <div>
+            <h3>Шәкірт тілектері</h3>
+            <p>Оқушылардың қолын жазған тілек мәтіндерін әр слайдқа қосуға болады.</p>
+            <span class="feat-tag tag-easy">Ең сұралған</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:#d9e8e8">🎂</div>
+          <div>
+            <h3>Кун санағышы</h3>
+            <p>Әр мұғалімнің туылған күнін қосып, автоматты құттықтау пайда болады.</p>
+            <span class="feat-tag tag-medium">Орташа</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:#f3e6c8">🏆</div>
+          <div>
+            <h3>Әңгіме жүйелері</h3>
+            <p>Мұғалімдердің жетістіктерін, алқанґан марапаттарын бөліме көрсетуге болады.</p>
+            <span class="feat-tag tag-medium">Орташа</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:rgba(104,177,183,.15)">🎬</div>
+          <div>
+            <h3>Бейнеқұттықтау</h3>
+            <p>Оқушылар жасаған бейнеролик видеосын яки YouTube сілтемесін сайтқа орнатуға болады.</p>
+            <span class="feat-tag tag-wow">Эффекті</span>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon" style="background:rgba(104,177,183,.15)">✨</div>
+          <div>
+            <h3>Конфетті анимация</h3>
+            <p>Шәкірт қарағанда алтын конфетті жаңбырсын сайтқа енгізуге болады — қарапайым көрінеді!</p>
+            <span class="feat-tag tag-wow">Эффекті</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="container">
     <div class="footer-card">
       <strong>Ардақты ер мұғалімдер!</strong><br>
@@ -243,12 +381,13 @@
 
 <footer><div class="container">© 2026 · 7 мамыр · Мектептік мерекелік бет</div></footer>
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
   <source src="N-SAL-SARBAZ.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 (function(){
+  /* ---- TEACHERS DATA ---- */
   var teachers=[
     {l:"Бекенов",f:"Асқар",s:"Информатика"},
     {l:"Жақсыбеков",f:"Нұрлан",s:"Математика"},
@@ -332,15 +471,44 @@
 
   goTo(0);startAuto();
 
+  /* ---- MUSIC ---- */
   var audio=document.getElementById('bgMusic');
   var mBtn=document.getElementById('musicToggle');
   var mLbl=document.getElementById('musicLabel');
   var playing=false;
+
+  function tryPlay(){
+    audio.load();
+    var p=audio.play();
+    if(p!==undefined){
+      p.then(function(){
+        playing=true;
+        mBtn.classList.add('playing');
+        mLbl.textContent='Тоқтату';
+      }).catch(function(e){
+        console.warn('Музыка қате:',e);
+      });
+    }
+  }
+
   mBtn.addEventListener('click',function(){
-    if(playing){audio.pause();playing=false;mBtn.classList.add('paused');mLbl.textContent='Музыка';}
-    else{audio.play().then(function(){playing=true;mBtn.classList.remove('paused');mLbl.textContent='Тоқтату';}).catch(function(){});}
+    if(playing){
+      audio.pause();
+      playing=false;
+      mBtn.classList.remove('playing');
+      mLbl.textContent='Аәуен қос';
+    } else {
+      tryPlay();
+    }
   });
 
+  /* Браузер autoplay шектеуін айналау үшін алғаш басқанда авто иске қосылады */
+  document.addEventListener('click',function onFirst(){
+    if(!playing){tryPlay();}
+    document.removeEventListener('click',onFirst);
+  },{once:true});
+
+  /* ---- THEME ---- */
   var root=document.documentElement,theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   root.setAttribute('data-theme',theme);
   document.getElementById('themeToggle').addEventListener('click',function(){
