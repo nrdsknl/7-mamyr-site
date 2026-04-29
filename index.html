@@ -62,10 +62,7 @@
       min-height:44px;transition:background .2s,border-color .2s;
     }
     .music-btn.playing{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
-    .music-btn .mdot{
-      width:.55rem;height:.55rem;border-radius:50%;
-      background:var(--muted);flex-shrink:0;
-    }
+    .music-btn .mdot{width:.55rem;height:.55rem;border-radius:50%;background:var(--muted);flex-shrink:0;}
     .music-btn.playing .mdot{background:var(--primary);animation:pulse 1.2s infinite;}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.65)}}
     main{padding-bottom:3rem}
@@ -135,85 +132,6 @@
       width:1rem;height:1rem;border-radius:50%;background:#fff;transition:transform .2s;
     }
     .toggle.on::after{transform:translateX(1.1rem)}
-    /* ---- QR SECTION ---- */
-    .qr-section{
-      margin-top:3rem;padding:2rem 0;
-    }
-    .qr-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--r-lg);
-      padding:2rem 1.5rem;
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:1.25rem;
-      text-align:center;
-    }
-    .qr-title{
-      font-family:var(--font-display);
-      font-size:clamp(1.1rem,2.5vw,1.5rem);
-      margin:0;
-    }
-    .qr-sub{color:var(--muted);font-size:.88rem;max-width:38ch;line-height:1.6;}
-    .qr-img-wrap{
-      position:relative;
-      background:#fff;
-      border-radius:var(--r-md);
-      padding:1rem;
-      box-shadow:0 4px 20px rgba(0,0,0,.10);
-      border:3px solid var(--primary-soft);
-    }
-    .qr-img-wrap img{display:block;width:200px;height:200px;border-radius:.35rem;}
-    .qr-badge{
-      position:absolute;bottom:-.7rem;left:50%;transform:translateX(-50%);
-      background:var(--primary);color:#fff;
-      font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-      padding:.25rem .75rem;border-radius:var(--r-full);
-      white-space:nowrap;
-    }
-    .qr-url{
-      font-size:.78rem;color:var(--primary);
-      word-break:break-all;font-weight:600;
-      background:var(--primary-soft);
-      padding:.4rem .85rem;border-radius:var(--r-full);
-    }
-    .qr-hint{font-size:.75rem;color:var(--faint);display:flex;align-items:center;gap:.4rem;}
-    /* ---- FEATURES SECTION ---- */
-    .features-section{margin-top:2.5rem}
-    .section-head{margin-bottom:1.5rem}
-    .section-head h2{font-family:var(--font-display);font-size:clamp(1.2rem,2.5vw,1.75rem);margin-bottom:.35rem}
-    .section-head p{color:var(--muted);font-size:.88rem}
-    .features-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));
-      gap:1rem;
-    }
-    .feat-card{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--r-md);
-      padding:1.25rem 1.1rem;
-      box-shadow:var(--shadow);
-      display:flex;gap:.9rem;align-items:flex-start;
-    }
-    .feat-icon{
-      width:2.5rem;height:2.5rem;border-radius:.65rem;
-      display:grid;place-items:center;flex-shrink:0;
-      font-size:1.2rem;
-    }
-    .feat-card h3{font-size:.9rem;font-weight:700;margin-bottom:.3rem}
-    .feat-card p{font-size:.8rem;color:var(--muted);margin:0;line-height:1.55}
-    .feat-tag{
-      display:inline-block;margin-top:.5rem;
-      font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-      padding:.18rem .55rem;border-radius:var(--r-full);
-    }
-    .tag-easy{background:rgba(70,107,43,.12);color:#466b2b}
-    .tag-medium{background:var(--gold-soft);color:var(--gold)}
-    .tag-wow{background:var(--primary-soft);color:var(--primary)}
-    /* ---- FOOTER CARD ---- */
     .footer-card{
       margin-top:2.5rem;padding:1.75rem;
       border-radius:var(--r-lg);background:var(--surface);
@@ -221,7 +139,39 @@
       text-align:center;color:var(--muted);font-size:.9rem;line-height:1.9;
     }
     .footer-card strong{color:var(--text)}
-    footer{padding:2rem 0 3rem;text-align:center;color:var(--faint);font-size:.78rem}
+    /* QR mini */
+    .qr-mini{padding:1.75rem 0 0}
+    .qr-mini-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      border-radius:var(--r-lg);
+      border:1px dashed var(--border);
+      background:var(--surface);
+      padding:.9rem 1.1rem;
+    }
+    .qr-mini-text{flex:1;min-width:0;}
+    .qr-mini-label{
+      font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--primary);margin-bottom:.3rem;
+    }
+    .qr-mini-text p{font-size:.8rem;color:var(--muted);line-height:1.5;margin:0;}
+    .qr-mini-url{
+      display:inline-block;margin-top:.4rem;
+      font-size:.72rem;font-weight:600;color:var(--primary);
+      background:var(--primary-soft);padding:.2rem .65rem;border-radius:var(--r-full);
+    }
+    .qr-mini-img{
+      background:#fff;padding:.35rem;
+      border-radius:.65rem;
+      box-shadow:0 2px 10px rgba(0,0,0,.11);
+      border:2px solid var(--primary-soft);
+      flex-shrink:0;
+    }
+    .qr-mini-img img{display:block;width:88px;height:88px;}
+    @media(max-width:420px){
+      .qr-mini-img img{width:72px;height:72px;}
+      .qr-mini-text p{font-size:.75rem;}
+    }
+    footer{padding:1.5rem 0 2.5rem;text-align:center;color:var(--faint);font-size:.78rem}
     @media(max-width:500px){
       .arrow{width:2.25rem;height:2.25rem}
       .arrow-prev{left:.4rem}.arrow-next{right:.4rem}
@@ -243,7 +193,7 @@
     <div class="nav-right">
       <button class="music-btn" id="musicToggle" title="Музыканы қос / өшір">
         <span class="mdot"></span>
-        <span id="musicLabel">Аәуен қос</span>
+        <span id="musicLabel">Әуен қос</span>
       </button>
       <button class="icon-btn" id="themeToggle" title="Тақырып">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -288,86 +238,6 @@
     </div>
   </section>
 
-  <!-- QR CODE SECTION -->
-  <section class="qr-section">
-    <div class="container">
-      <div class="qr-card">
-        <h2 class="qr-title">📱 Сайтқа оңай кіру</h2>
-        <p class="qr-sub">Құрылғышты нүктеп қана ашыңыз — бұл бетті кәме телефоныңызда ашуға болады!</p>
-        <div class="qr-img-wrap">
-          <img src="http://qrcoder.ru/code/?https%3A%2F%2Fnrdsknl.github.io%2F7-mamyr-site%2F&8&0"
-               alt="QR код — 7 мамыр сайты" width="200" height="200">
-          <span class="qr-badge">QR код</span>
-        </div>
-        <div class="qr-url">nrdsknl.github.io/7-mamyr-site</div>
-        <p class="qr-hint">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Телефон камерасымен нүктеңіз — сайт ашылады
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES SECTION -->
-  <section class="features-section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Тағы қосуға болады</h2>
-        <p>Сайтты одан сайын толықтыра аламыз</p>
-      </div>
-      <div class="features-grid">
-        <div class="feat-card">
-          <div class="feat-icon" style="background:#d9e8e8">📸</div>
-          <div>
-            <h3>Нақты фотолар</h3>
-            <p>Әр мұғалімнің нақты фотосын аватар орнына қоюға болады — слайд-шоу одан эмоционалды болады!</p>
-            <span class="feat-tag tag-easy">Ең сұралған</span>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" style="background:#f3e6c8">💬</div>
-          <div>
-            <h3>Шәкірт тілектері</h3>
-            <p>Оқушылардың қолын жазған тілек мәтіндерін әр слайдқа қосуға болады.</p>
-            <span class="feat-tag tag-easy">Ең сұралған</span>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" style="background:#d9e8e8">🎂</div>
-          <div>
-            <h3>Кун санағышы</h3>
-            <p>Әр мұғалімнің туылған күнін қосып, автоматты құттықтау пайда болады.</p>
-            <span class="feat-tag tag-medium">Орташа</span>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" style="background:#f3e6c8">🏆</div>
-          <div>
-            <h3>Әңгіме жүйелері</h3>
-            <p>Мұғалімдердің жетістіктерін, алқанґан марапаттарын бөліме көрсетуге болады.</p>
-            <span class="feat-tag tag-medium">Орташа</span>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" style="background:rgba(104,177,183,.15)">🎬</div>
-          <div>
-            <h3>Бейнеқұттықтау</h3>
-            <p>Оқушылар жасаған бейнеролик видеосын яки YouTube сілтемесін сайтқа орнатуға болады.</p>
-            <span class="feat-tag tag-wow">Эффекті</span>
-          </div>
-        </div>
-        <div class="feat-card">
-          <div class="feat-icon" style="background:rgba(104,177,183,.15)">✨</div>
-          <div>
-            <h3>Конфетті анимация</h3>
-            <p>Шәкірт қарағанда алтын конфетті жаңбырсын сайтқа енгізуге болады — қарапайым көрінеді!</p>
-            <span class="feat-tag tag-wow">Эффекті</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <div class="container">
     <div class="footer-card">
       <strong>Ардақты ер мұғалімдер!</strong><br>
@@ -375,6 +245,23 @@
       7 мамыр — Отан қорғаушылар күні мерекесімен,<br>
       денсаулық, бақыт және табыс тілейміз!<br>
       <em style="color:var(--primary)">— Мектеп ұжымы атынан</em>
+    </div>
+  </div>
+
+  <!-- QR mini — footer-дан биік, ықшам -->
+  <div class="container">
+    <div class="qr-mini">
+      <div class="qr-mini-inner">
+        <div class="qr-mini-text">
+          <div class="qr-mini-label">📱 QR арқылы ашу</div>
+          <p>Телефон камерасымен нүктеңіз — сайт бірден ашылады.</p>
+          <span class="qr-mini-url">nrdsknl.github.io/7-mamyr-site</span>
+        </div>
+        <div class="qr-mini-img">
+          <img src="http://qrcoder.ru/code/?https%3A%2F%2Fnrdsknl.github.io%2F7-mamyr-site%2F&8&0"
+               alt="QR код — 7 мамыр" width="88" height="88">
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -387,7 +274,6 @@
 
 <script>
 (function(){
-  /* ---- TEACHERS DATA ---- */
   var teachers=[
     {l:"Бекенов",f:"Асқар",s:"Информатика"},
     {l:"Жақсыбеков",f:"Нұрлан",s:"Математика"},
@@ -471,44 +357,30 @@
 
   goTo(0);startAuto();
 
-  /* ---- MUSIC ---- */
+  /* MUSIC */
   var audio=document.getElementById('bgMusic');
   var mBtn=document.getElementById('musicToggle');
   var mLbl=document.getElementById('musicLabel');
   var playing=false;
 
-  function tryPlay(){
+  function setUi(){
+    if(playing){mBtn.classList.add('playing');mLbl.textContent='Тоқтату';}
+    else{mBtn.classList.remove('playing');mLbl.textContent='Әуен қос';}
+  }
+  function startMusic(){
     audio.load();
     var p=audio.play();
-    if(p!==undefined){
-      p.then(function(){
-        playing=true;
-        mBtn.classList.add('playing');
-        mLbl.textContent='Тоқтату';
-      }).catch(function(e){
-        console.warn('Музыка қате:',e);
-      });
-    }
+    if(p&&p.then){p.then(function(){playing=true;setUi();}).catch(function(e){console.warn(e);});}
   }
-
   mBtn.addEventListener('click',function(){
-    if(playing){
-      audio.pause();
-      playing=false;
-      mBtn.classList.remove('playing');
-      mLbl.textContent='Аәуен қос';
-    } else {
-      tryPlay();
-    }
+    if(playing){audio.pause();playing=false;setUi();}else{startMusic();}
   });
-
-  /* Браузер autoplay шектеуін айналау үшін алғаш басқанда авто иске қосылады */
-  document.addEventListener('click',function onFirst(){
-    if(!playing){tryPlay();}
-    document.removeEventListener('click',onFirst);
+  document.addEventListener('click',function once(){
+    if(!playing){startMusic();}
+    document.removeEventListener('click',once);
   },{once:true});
 
-  /* ---- THEME ---- */
+  /* THEME */
   var root=document.documentElement,theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
   root.setAttribute('data-theme',theme);
   document.getElementById('themeToggle').addEventListener('click',function(){
