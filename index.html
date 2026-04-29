@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="kk" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ер мұғалімдерге құрмет</title>
+  <meta name="description" content="7 мамыр – Отан қорғаушылар күніне арналған мектептің ер мұғалімдеріне құрмет көрсетуге арналған мобильді сайт." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --color-bg: #f7f6f2; --color-surface: #fcfbf8; --color-surface-2: #f1efe9;
+      --color-border: #d8d3c9; --color-divider: #e3ded5;
+      --color-text: #231f18; --color-text-muted: #6f6b64; --color-text-faint: #9f9a92;
+      --color-primary: #0b6b74; --color-primary-hover: #084f56;
+      --color-primary-soft: #d9e8e8; --color-gold: #bf8b1a; --color-gold-soft: #f3e6c8;
+      --color-success: #466b2b;
+      --shadow-sm: 0 8px 24px rgba(22,20,16,0.08);
+      --shadow-lg: 0 18px 48px rgba(22,20,16,0.12);
+      --radius-sm: 0.5rem; --radius-md: 1rem; --radius-lg: 1.5rem; --radius-full: 999px;
+      --font-display: 'Marcellus', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
+      --transition: 200ms cubic-bezier(0.16,1,0.3,1);
+    }
+    [data-theme="dark"] {
+      --color-bg: #151514; --color-surface: #1d1c1a; --color-surface-2: #252421;
+      --color-border: #3a3935; --color-divider: #2f2e2b;
+      --color-text: #f0ece4; --color-text-muted: #bbb4aa; --color-text-faint: #8e887f;
+      --color-primary: #68b1b7; --color-primary-hover: #8fd0d4;
+      --color-primary-soft: rgba(104,177,183,0.14); --color-gold: #f0be58;
+      --color-gold-soft: rgba(240,190,88,0.14); --color-success: #88b36b;
+      --shadow-sm: 0 10px 28px rgba(0,0,0,0.28); --shadow-lg: 0 24px 64px rgba(0,0,0,0.36);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh;
+      font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, rgba(191,139,26,0.15), transparent 30%),
+        radial-gradient(circle at top left, rgba(11,107,116,0.14), transparent 28%),
+        var(--color-bg);
+    }
+    img, svg { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    .skip-link { position: absolute; left: 1rem; top: -3rem; background: var(--color-primary); color: white; padding: 0.75rem 1rem; border-radius: var(--radius-full); z-index: 20; }
+    .skip-link:focus { top: 1rem; }
+    .container { width: min(100% - 1.5rem, 72rem); margin-inline: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: 0.875rem 0; }
+    .brand { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+    .logo { width: 2.75rem; height: 2.75rem; padding: 0.45rem; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary-soft), var(--color-gold-soft)); color: var(--color-primary); box-shadow: var(--shadow-sm); flex-shrink: 0; }
+    .brand strong { display: block; font-size: var(--text-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .brand span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); }
+    .theme-toggle { min-width: 44px; min-height: 44px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); display: inline-grid; place-items: center; box-shadow: var(--shadow-sm); }
+    main { padding-bottom: var(--space-16); }
+    .hero { padding: var(--space-10) 0 var(--space-8); }
+    .hero-card { position: relative; overflow: hidden; border-radius: var(--radius-lg); padding: var(--space-8) var(--space-5); background: linear-gradient(160deg, color-mix(in srgb, var(--color-surface) 92%, white 8%), var(--color-surface-2)); box-shadow: var(--shadow-lg); border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent); }
+    .hero-card::after { content: ""; position: absolute; inset: auto -3rem -3rem auto; width: 10rem; height: 10rem; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--color-gold) 26%, transparent), transparent 70%); pointer-events: none; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.85rem; border-radius: var(--radius-full); background: var(--color-primary-soft); color: var(--color-primary); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    h1, h2 { font-family: var(--font-display); line-height: 1.1; margin: 0; }
+    h1 { font-size: var(--text-2xl); margin-bottom: var(--space-4); max-width: 12ch; }
+    .hero-text { max-width: 60ch; color: var(--color-text-muted); margin-bottom: var(--space-6); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6); }
+    .btn { min-height: 44px; padding: 0.9rem 1.1rem; border-radius: var(--radius-full); border: 1px solid transparent; font-weight: 700; transition: transform var(--transition), background var(--transition), border-color var(--transition); }
+    .btn:active { transform: translateY(1px) scale(0.99); }
+    .btn-primary { background: var(--color-primary); color: #fff; }
+    .btn-secondary { background: var(--color-surface); border-color: var(--color-border); color: var(--color-text); }
+    .hero-grid { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+    .stat { padding: var(--space-4); border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-surface) 90%, transparent); border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent); }
+    .stat strong { display: block; font-size: var(--text-lg); margin-bottom: 0.15rem; }
+    .section { padding: var(--space-8) 0 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-5); }
+    .section-head p { margin: 0; color: var(--color-text-muted); max-width: 42ch; font-size: var(--text-sm); }
+    .cards { display: grid; gap: var(--space-4); }
+    .card { background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-border) 78%, transparent); border-radius: var(--radius-md); padding: var(--space-5); box-shadow: var(--shadow-sm); }
+    .card h3 { margin-top: 0; margin-bottom: 0.6rem; font-size: var(--text-lg); }
+    .card p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .quote { background: linear-gradient(135deg, var(--color-primary-soft), transparent 85%), var(--color-surface); }
+    .timeline { display: grid; gap: var(--space-3); }
+    .timeline-item { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); align-items: start; padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+    .timeline-badge { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--color-gold-soft); color: var(--color-gold); font-weight: 800; font-size: var(--text-sm); }
+    .list { display: grid; gap: var(--space-3); padding: 0; list-style: none; margin: 0; }
+    .list li { display: flex; gap: 0.75rem; align-items: flex-start; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-divider); color: var(--color-text-muted); font-size: var(--text-sm); }
+    .list li:last-child { border-bottom: 0; }
+    .dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--color-primary); margin-top: 0.4rem; flex-shrink: 0; }
+    .footer-box { margin-top: var(--space-8); background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
+    footer { padding: var(--space-8) 0 var(--space-10); color: var(--color-text-muted); font-size: var(--text-sm); }
+    @media (min-width: 700px) {
+      .hero-card { padding: var(--space-10); }
+      .hero-grid { grid-template-columns: repeat(3,1fr); }
+      .cards { grid-template-columns: repeat(2,1fr); }
+      .cards .wide { grid-column: span 2; }
+    }
+    @media (min-width: 1000px) {
+      .hero-layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: var(--space-6); align-items: end; }
+      .cards.three { grid-template-columns: repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Негізгі мазмұнға өту</a>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="32" cy="32" r="27" stroke="currentColor" stroke-width="3.2" opacity="0.25"/>
+          <path d="M18 36C25 33 28 26 32 18C36 26 39 33 46 36" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M22 39H42" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M26 45H38" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Ер мұғалімдерге құрмет</strong>
+          <span>7 мамыр • мектептік құттықтау беті</span>
+        </div>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Қараңғы режимге ауысу">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <main id="content">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-layout">
+            <div>
+              <div class="eyebrow">7 мамыр • Отан қорғаушылар күні</div>
+              <h1>Мектебіміздің ер мұғалімдеріне ізгі құрмет</h1>
+              <p class="hero-text">Бұл мобильді бет мектеп ұжымы атынан ер мұғалімдерді құттықтауға, алғыс айтуға және мерекелік жылы лебізді заманауи форматта ұсынуға арналған.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#tilek">Құттықтау оқу</a>
+                <a class="btn btn-secondary" href="#bagdarlama">Бағдарлама</a>
+              </div>
+            </div>
+            <div class="card quote">
+              <h3>Мерекелік лебіз</h3>
+              <p>Сіздердің білім мен тәрбие жолындағы табанды еңбектеріңіз, жауапкершіліктеріңіз және шәкірт жүрегіне сенім ұялататын азаматтық болмыстарыңыз ерекше құрметке лайық.</p>
+            </div>
+          </div>
+          <div class="hero-grid">
+            <div class="stat"><strong>7 мамыр</strong><span>Қазақстандағы Отан қорғаушылар күні</span></div>
+            <div class="stat"><strong>Мектеп рухы</strong><span>Құрмет, алғыс, бірлік және патриоттық құндылық</span></div>
+            <div class="stat"><strong>Мобильді формат</strong><span>Телефоннан ашуға ыңғайлы ықшам сайт</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="tilek">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Құттықтау мәтіні</h2></div>
+          <p>Мектеп сайтына, WhatsApp сілтемесіне немесе мерекелік экранға қоюға ыңғайлы нұсқа.</p>
+        </div>
+        <div class="cards">
+          <article class="card wide">
+            <h3>Ардақты ер мұғалімдер!</h3>
+            <p>Сіздерді 7 мамыр – Отан қорғаушылар күнімен шын жүректен құттықтаймыз! Сіздер жас ұрпаққа білім беріп қана қоймай, жауапкершілік, тәртіп, табандылық және отансүйгіштік секілді асыл қасиеттерді үлгі етіп келесіздер. Дендеріңізге саулық, отбасыларыңызға амандық, еңбектеріңізге табыс, абырой-беделдеріңізге биік мәртебе тілейміз!</p>
+          </article>
+          <article class="card">
+            <h3>Қысқа формат</h3>
+            <p>Құрметті әріптестер, 7 мамыр мерекесі құтты болсын! Еңбектеріңіз еленіп, абыройларыңыз арта берсін.</p>
+          </article>
+          <article class="card">
+            <h3>Сахнаға лайық</h3>
+            <p>Ұстаздық жолында шәкіртке шамшырақ болып жүрген азамат ағайларымызға шынайы алғыс айтамыз.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="bagdarlama">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Іс-шара құрылымы</h2></div>
+          <p>Мектепішілік шағын мерекелік кешке немесе жиынға бейімдеуге болады.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-badge">1</div>
+            <div><strong>Ашылу сөзі</strong><p>Жүргізуші мерекенің маңызын атап өтіп, ер мұғалімдердің мектеп өміріндегі орнын айқындайды.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-badge">2</div>
+            <div><strong>Құттықтау блогы</strong><p>Оқушылардан бейнеқұттықтау, тілектер немесе сахналық шағын нөмір ұсынылады.</p></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-badge">3</div>
+            <div><strong>Алғыс пен марапат</strong><p>Мектеп әкімшілігі атынан алғыс хат, естелік сөз немесе шағын сыйлық табысталады.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Сайтқа не қосуға болады</h2></div>
+          <p>Қаласаңыз, осы бетті мектепке арнайы толық нұсқаға айналдырамыз.</p>
+        </div>
+        <div class="cards three">
+          <article class="card"><h3>Мұғалімдер галереясы</h3><p>Әр ер мұғалімнің фотосын, аты-жөнін және қысқа тілек мәтінін енгіземіз.</p></article>
+          <article class="card"><h3>Музыка немесе гимн</h3><p>Мерекелік әуен, салтанатты фон немесе бейне кірістіруге болады.</p></article>
+          <article class="card"><h3>QR арқылы тарату</h3><p>Сайт сілтемесін QR-кодпен таратып, ата-ана мен ұжымға оңай бөлісуге болады.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container footer-box">
+        <div class="section-head">
+          <div><h2>Маңызды ескерту</h2></div>
+          <p>Мемлекеттік рәміздерді қолданғанда ресми талаптарды сақтау қажет.</p>
+        </div>
+        <ul class="list" role="list">
+          <li><span class="dot"></span><span>Егер сайтқа Ту, Елтаңба немесе Гимн мәтіні енгізілсе, олар Қазақстан Республикасының ресми бекітілген нұсқасына сәйкес болуы керек.</span></li>
+          <li><span class="dot"></span><span>Білім беру ұйымдарында патриоттық тәрбие мен мемлекеттік рәміздерді құрметтеу талаптары заңнамада арнайы көрсетілген.</span></li>
+          <li><span class="dot"></span><span>Сайтқа мектеп атауын, директордың құттықтауын, ұжым фотосын және нақты ер мұғалімдер тізімін қоса аламыз.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">Дайын үлгі. Мектеп атауы, логотипі, мұғалімдер фотолары және жеке құттықтау мәтіндерімен толықтырып беремін.</div>
+  </footer>
+  <script>
+    (function(){
+      var root=document.documentElement;
+      var toggle=document.querySelector('[data-theme-toggle]');
+      var theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+      root.setAttribute('data-theme',theme);
+      function renderIcon(c){
+        toggle.innerHTML=c==='dark'
+          ?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+          :'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        toggle.setAttribute('aria-label',c==='dark'?'Жарық режимге ауысу':'Қараңғы режимге ауысу');
+      }
+      renderIcon(theme);
+      toggle.addEventListener('click',function(){
+        theme=theme==='dark'?'light':'dark';
+        root.setAttribute('data-theme',theme);
+        renderIcon(theme);
+      });
+    })();
+  </script>
+</body>
+</html>
