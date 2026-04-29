@@ -97,8 +97,13 @@
       background:var(--surface2);
     }
     .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-    .slide h3{font-family:var(--font-display);font-size:clamp(1.05rem,2.5vw,1.45rem);margin-bottom:.25rem;line-height:1.25}
-    .slide .patronymic{color:var(--muted);font-size:.82rem;margin-bottom:.4rem}
+    .slide h3{
+      font-family:var(--font-display);
+      font-size:clamp(1rem,2.2vw,1.35rem);
+      line-height:1.3;
+      margin-bottom:.4rem;
+      word-break:keep-all;
+    }
     .slide .school{color:var(--faint);font-size:.78rem}
     .dots{display:flex;justify-content:center;gap:.45rem;margin-top:1.5rem;flex-wrap:wrap;padding:0 .5rem;}
     .dot-item{
@@ -130,22 +135,15 @@
       width:1rem;height:1rem;border-radius:50%;background:#fff;transition:transform .2s;
     }
     .toggle.on::after{transform:translateX(1.1rem)}
-    /* ===== INVITE CARD ===== */
     .invite-wrap{margin-top:2rem;}
     .invite-card{
-      border-radius:var(--r-lg);
-      overflow:hidden;
-      box-shadow:var(--shadow-lg);
-      border:1px solid var(--border);
-      background:var(--surface);
+      border-radius:var(--r-lg);overflow:hidden;
+      box-shadow:var(--shadow-lg);border:1px solid var(--border);background:var(--surface);
     }
     .invite-img-wrap{
       position:relative;width:100%;height:clamp(160px,30vw,260px);overflow:hidden;
     }
-    .invite-img-wrap img{
-      width:100%;height:100%;object-fit:cover;display:block;
-      filter:brightness(.78);
-    }
+    .invite-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.78);}
     .invite-img-overlay{
       position:absolute;inset:0;
       background:linear-gradient(to bottom,transparent 40%,rgba(11,107,116,.72) 100%);
@@ -154,28 +152,21 @@
       position:absolute;bottom:.9rem;left:1.1rem;
       font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
       color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);
-      padding:.28rem .75rem;border-radius:var(--r-full);
-      border:1px solid rgba(255,255,255,.25);
+      padding:.28rem .75rem;border-radius:var(--r-full);border:1px solid rgba(255,255,255,.25);
     }
     .invite-body{padding:1.5rem 1.75rem 1.75rem;}
     .invite-title{
-      font-family:var(--font-display);
-      font-size:clamp(1.1rem,2.5vw,1.5rem);
-      margin-bottom:.6rem;
-      color:var(--text);
+      font-family:var(--font-display);font-size:clamp(1.1rem,2.5vw,1.5rem);
+      margin-bottom:.6rem;color:var(--text);
     }
     .invite-text{
       font-size:.9rem;color:var(--muted);line-height:1.75;
-      margin-bottom:1.25rem;
-      border-left:3px solid var(--primary);
-      padding-left:1rem;
+      margin-bottom:1.25rem;border-left:3px solid var(--primary);padding-left:1rem;
     }
     .invite-details{display:flex;flex-wrap:wrap;gap:.55rem;}
     .invite-chip{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.38rem .85rem;
-      border-radius:var(--r-full);
-      font-size:.78rem;font-weight:600;
+      display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;
+      border-radius:var(--r-full);font-size:.78rem;font-weight:600;
       background:var(--primary-soft);color:var(--primary);
       border:1px solid color-mix(in srgb,var(--primary) 20%,transparent);
     }
@@ -184,21 +175,15 @@
       border-color:color-mix(in srgb,var(--gold) 20%,transparent);
     }
     @media(max-width:480px){.invite-body{padding:1.1rem 1.1rem 1.4rem;}}
-    /* ===== COUNTDOWN ===== */
     .countdown-wrap{margin-top:1.25rem;}
     .countdown-card{
       background:linear-gradient(135deg,var(--primary) 0%,#0e8a96 100%);
-      border-radius:var(--r-lg);
-      padding:1.5rem 1.5rem 1.6rem;
-      box-shadow:var(--shadow-lg);
-      color:#fff;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
+      border-radius:var(--r-lg);padding:1.5rem 1.5rem 1.6rem;
+      box-shadow:var(--shadow-lg);color:#fff;text-align:center;
+      position:relative;overflow:hidden;
     }
     .countdown-card::before{
-      content:'';
-      position:absolute;inset:0;
+      content:'';position:absolute;inset:0;
       background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.12),transparent 55%);
       pointer-events:none;
     }
@@ -206,44 +191,31 @@
       display:inline-flex;align-items:center;gap:.4rem;
       font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
       background:rgba(255,255,255,.18);padding:.3rem .8rem;
-      border-radius:var(--r-full);margin-bottom:.75rem;
-      color:rgba(255,255,255,.9);
+      border-radius:var(--r-full);margin-bottom:.75rem;color:rgba(255,255,255,.9);
     }
     .cd-boxes{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.75rem;}
     .cd-box{
-      background:rgba(255,255,255,.15);
-      backdrop-filter:blur(6px);
-      border:1px solid rgba(255,255,255,.2);
-      border-radius:.75rem;
-      padding:.65rem .5rem .5rem;
-      min-width:4.5rem;
-      flex:1;max-width:5.5rem;
+      background:rgba(255,255,255,.15);backdrop-filter:blur(6px);
+      border:1px solid rgba(255,255,255,.2);border-radius:.75rem;
+      padding:.65rem .5rem .5rem;min-width:4.5rem;flex:1;max-width:5.5rem;
     }
     .cd-num{
-      font-family:var(--font-display);
-      font-size:clamp(1.6rem,5vw,2.4rem);
-      line-height:1;
-      display:block;
-      color:#fff;
-      letter-spacing:.02em;
+      font-family:var(--font-display);font-size:clamp(1.6rem,5vw,2.4rem);
+      line-height:1;display:block;color:#fff;letter-spacing:.02em;
     }
     .cd-lbl{
       font-size:.62rem;font-weight:700;letter-spacing:.06em;
-      text-transform:uppercase;color:rgba(255,255,255,.7);
-      display:block;margin-top:.3rem;
+      text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-top:.3rem;
     }
     .cd-footer{
       font-size:.75rem;font-weight:700;letter-spacing:.18em;
       text-transform:uppercase;color:rgba(255,255,255,.75);
-      margin-top:.1rem;
     }
     .cd-done{
-      font-family:var(--font-display);
-      font-size:clamp(1.1rem,3vw,1.6rem);
+      font-family:var(--font-display);font-size:clamp(1.1rem,3vw,1.6rem);
       color:#fff;padding:.5rem 0;
     }
     @media(max-width:360px){.cd-box{min-width:3.5rem;}.cd-num{font-size:1.4rem;}}
-    /* ===== FOOTER CARD ===== */
     .footer-card{
       margin-top:2rem;padding:1.75rem;
       border-radius:var(--r-lg);background:var(--surface);
@@ -254,16 +226,11 @@
     .qr-mini{padding:1.75rem 0 0}
     .qr-mini-inner{
       display:flex;align-items:center;justify-content:space-between;gap:1rem;
-      border-radius:var(--r-lg);
-      border:1px dashed var(--border);
-      background:var(--surface);
-      padding:.9rem 1.1rem;
+      border-radius:var(--r-lg);border:1px dashed var(--border);
+      background:var(--surface);padding:.9rem 1.1rem;
     }
     .qr-mini-text{flex:1;min-width:0;}
-    .qr-mini-label{
-      font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-      color:var(--primary);margin-bottom:.3rem;
-    }
+    .qr-mini-label{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:.3rem;}
     .qr-mini-text p{font-size:.8rem;color:var(--muted);line-height:1.5;margin:0;}
     .qr-mini-url{
       display:inline-block;margin-top:.4rem;
@@ -271,17 +238,11 @@
       background:var(--primary-soft);padding:.2rem .65rem;border-radius:var(--r-full);
     }
     .qr-mini-img{
-      background:#fff;padding:.35rem;
-      border-radius:.65rem;
-      box-shadow:0 2px 10px rgba(0,0,0,.11);
-      border:2px solid var(--primary-soft);
-      flex-shrink:0;
+      background:#fff;padding:.35rem;border-radius:.65rem;
+      box-shadow:0 2px 10px rgba(0,0,0,.11);border:2px solid var(--primary-soft);flex-shrink:0;
     }
     .qr-mini-img img{display:block;width:88px;height:88px;object-fit:contain;}
-    @media(max-width:420px){
-      .qr-mini-img img{width:72px;height:72px;}
-      .qr-mini-text p{font-size:.75rem;}
-    }
+    @media(max-width:420px){.qr-mini-img img{width:72px;height:72px;}.qr-mini-text p{font-size:.75rem;}}
     footer{padding:1.5rem 0 2.5rem;text-align:center;color:var(--faint);font-size:.78rem}
     @media(max-width:500px){
       .arrow{width:2.25rem;height:2.25rem}
@@ -321,7 +282,7 @@
       <p>
         Сіздер — білімнің шамшырағы, мектебіміздің тірегі, шәкірттер үшін нағыз үлгі болатын азаматсыздар.
         Күн сайынғы еңбегіңіз, төзіміңіз бен жауапкершілігіңіз үшін зор алғыс айтамыз.
-        Елдің ертеңі – өздеріңіз тәрбиелеп отырған жас ұрпақтың қолында, ал сол ұрпаққа дұрыс бағыт беріп жүрген сіздей ер ұстаздар барда, болашақ үшін көңіл орнықты.
+        Елдің ертеңі – өздеріңіз тәрбиелеп отырған жас ұрпақтың қолында, ал сол ұрпаққа дұрыс бағыт беріп жүрген сіздей ер азаматтар барда, болашақ үшін көңіл орнықты.
         Отан қорғаушылар күні баршаңызға мықты денсаулық, отбасыңызға береке-бірлік, еңбегіңізге мол табыс әкелсін!
       </p>
     </div>
@@ -444,33 +405,31 @@
 <script>
 (function(){
   var teachers=[
-    {last:"Сыдық",   first:"Қуат",     mid:"Тұрсынұлы",   img:"1.jpeg"},
-    {last:"Черикбанов", first:"Талғат",  mid:"Акимбаевич",  img:"2.jpeg"},
-    {last:"Омарбаев", first:"Амангазы", mid:"Абусалыкович",img:"3.jpeg"},
-    {last:"Саитбеков",first:"Тимур",    mid:"Саитбекович", img:"4.jpeg"},
-    {last:"Амиров",   first:"Меиз",     mid:"Мукенович",   img:"5.jpeg"},
-    {last:"Тултаев",  first:"Тилек",    mid:"Жумагазинович",img:"6.jpeg"},
-    {last:"Байтолыков",first:"Амантай", mid:"Саниязбекович",img:"7.jpeg"},
-    {last:"Жексембаев",first:"Ерболат", mid:"Газизович",   img:"8.jpeg"},
-    {last:"Толеугазыев",first:"Ердос",  mid:"Абзалович",   img:"9.jpeg"},
-    {last:"Ибраев",   first:"Еркен",    mid:"Серикович",   img:"10.jpeg"},
-    {last:"Нурлиханов",first:"Адлет",   mid:"Сержанович",  img:"11.jpeg"},
-    {last:"Сыгаев",   first:"Бауыржан", mid:"Сагидоллаевич",img:"12.jpeg"},
-    {last:"Оразханов",first:"Сунгат",   mid:"Ахмадиярович",img:"13.jpeg"},
-    {last:"Алтынбек", first:"",         mid:"Шарипханович", img:"14.jpeg"}
+    {name:"Сыдық Қуат Тұрсынұлы",     img:"1.jpeg"},
+    {name:"Черикбанов Талғат Акимбаевич",  img:"2.jpeg"},
+    {name:"Омарбаев Амангазы Абусалыкович",img:"3.jpeg"},
+    {name:"Саитбеков Тимур Саитбекович",   img:"4.jpeg"},
+    {name:"Амиров Меиз Мукенович",         img:"5.jpeg"},
+    {name:"Тултаев Тилек Жумагазинович",   img:"6.jpeg"},
+    {name:"Байтолыков Амантай Саниязбекович",img:"7.jpeg"},
+    {name:"Жексембаев Ерболат Газизович",  img:"8.jpeg"},
+    {name:"Толеугазыев Ердос Абзалович",   img:"9.jpeg"},
+    {name:"Ибраев Еркен Серикович",        img:"10.jpeg"},
+    {name:"Нурлиханов Адлет Сержанович",   img:"11.jpeg"},
+    {name:"Сыгаев Бауыржан Сагидоллаевич", img:"12.jpeg"},
+    {name:"Оразханов Сунгат Ахмадиярович", img:"13.jpeg"},
+    {name:"Алтынбек Шарипханович",         img:"14.jpeg"}
   ];
 
   var slidesEl=document.getElementById('slides');
   var dotsEl=document.getElementById('dots');
   var sHTML='',dHTML='';
   teachers.forEach(function(t,i){
-    var fullName = t.last + (t.first ? ' ' + t.first : '');
     sHTML+='<div class="slide">'+
-      '<div class="avatar"><img src="'+t.img+'" alt="'+fullName+'" loading="lazy" onerror="this.parentNode.style.background=\'#0b6b74\';this.style.display=\'none\'"></div>'+
-      '<h3>'+fullName+'</h3>'+
-      '<p class="patronymic">'+t.mid+'</p>'+
+      '<div class="avatar"><img src="'+t.img+'" alt="'+t.name+'" loading="lazy" onerror="this.parentNode.style.background=\'#0b6b74\';this.style.display=\'none\'"></div>'+
+      '<h3>'+t.name+'</h3>'+
       '<p class="school">Мектеп ұжымы</p></div>';
-    dHTML+='<button class="dot-item'+(i===0?' active':'')+'\" data-i="'+i+'" aria-label="'+(i+1)+'"></button>';
+    dHTML+='<button class="dot-item'+(i===0?' active':'')+'" data-i="'+i+'" aria-label="'+(i+1)+'"></button>';
   });
   slidesEl.innerHTML=sHTML;
   dotsEl.innerHTML=dHTML;
@@ -516,7 +475,7 @@
 
   goTo(0);startAuto();
 
-  /* ---- COUNTDOWN: 6 мамыр 11:30 ---- */
+  /* ---- COUNTDOWN ---- */
   var target=new Date('2026-05-06T11:30:00+05:00');
   function pad(n){return n<10?'0'+n:String(n);}
   function tickCd(){
